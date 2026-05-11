@@ -1,11 +1,13 @@
+/* 全体（HTML）の基本設定 */
 html{
     font-size: 32px;
 }
-
+/* ページ全体の背景色と文字色の設定 */
 body{
     background-color: green;
     color: whitesmoke;
 }
+/* ページ全体の背景色と文字色の設定 */
 header{
     height: 100vh;
     background-image: url(image2.png);
