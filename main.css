@@ -1,0 +1,15 @@
+html{
+    font-size: 32px;
+}
+
+body{
+    background-color: green;
+    color: whitesmoke;
+}
+header{
+    height: 100vh;
+    background-image: url(image2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:blueviolet;
+}
