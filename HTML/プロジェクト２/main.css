@@ -1,0 +1,175 @@
+
+/* ==========================================================================
+   ベーススタイル設定 (Base Styles)
+   ========================================================================== */
+
+html {
+    /* ブラウザのデフォルト設定やユーザーのアクセシビリティ設定を尊重するため、
+       ピクセル固定ではなく100%を指定します。 */
+    font-size: 100%;
+}
+
+body {
+    margin: 0; /* ブラウザがデフォルトで付与する余白をリセット */
+    min-height: 100vh; /* 画面の高さ100%を最小値として確保 */
+    background: #000; /* 動画読み込み前や欠損時のフォールバック背景色（黒） */
+    color: #111;
+    font-family: system-ui, sans-serif; /* OS標準の視認性の高いフォントを適用 */
+}
+
+
+/* ==========================================================================
+   背景動画のレイアウト (Background Video Layout)
+   ========================================================================== */
+
+.video-container {
+    /* 画面全体に固定配置し、スクロールしても追従しないように設定 */
+    position: fixed;
+    inset: 0; /* top: 0; right: 0; bottom: 0; left: 0; のショートハンド */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* コンテナからはみ出した動画部分を非表示（トリミング） */
+    z-index: -1; /* 全てのコンテンツの最背面に配置 */
+}
+
+.background-video {
+    /* コンテナの中央に動画を配置し、アスペクト比を維持したまま全画面を覆う設定 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    
+    /* scale(1.15): YouTube特有の上下の黒帯やUIを画面外に押し出すために少し拡大 */
+    transform: translate(-50%, -50%) scale(1.15);
+    
+    pointer-events: none; /* ユーザーのクリックや操作を無効化し、背面の動画に触れさせない */
+    border: none;
+    outline: none;
+}
+
+
+/* ==========================================================================
+   メインコンテンツ・パネル (Main Content Panel)
+   ========================================================================== */
+
+.content-panel {
+    /* 動画の上に重ねるための階層設定 */
+    position: relative;
+    z-index: 1; 
+    background: transparent; /* パネル自体の背景は透過 */
+    min-height: 200vh; /* スクロール領域を確保するための高さ設定 */
+    padding: 2rem 1.5rem;
+}
+
+.page-text {
+    /* clamp(最小幅, 推奨幅, 最大幅) を用いたレスポンシブな幅設定 */
+    width: clamp(200px, 85%, 1100px);
+    margin: 1rem auto; /* 上下に1remの余白、左右はautoで中央揃え */
+    
+    /* 現在は透過設定。枠や境界線を可視化したい場合は 
+       background: rgba(255, 255, 255, 0.95); などに変更します */
+    background: transparent; 
+    
+    /* 【重要】子要素（コーナーロゴ等）を絶対配置する際の基準点（アンカー）として機能します */
+    position: relative; 
+    
+    padding: 2.5rem 2.5rem 20rem 2.5rem; /* 上、右、下（大きめの余白）、左 */
+    box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.3); /* 白色のソフトな発光効果 */
+    border-radius: 8px; /* 角丸設定 */
+}
+
+
+/* ==========================================================================
+   タイポグラフィ（文字装飾） (Typography)
+   背景動画の上でも文字がはっきりと読めるように、多重のテキストシャドウを適用
+   ========================================================================== */
+
+.page-text h1 {
+    margin: 0;
+    font-size: 5rem;
+    line-height: 1.8;
+    color: azure; /* 白に近い明るい青系の色 */
+    text-shadow: 
+        0 0 4px rgba(0, 0, 0, 1),   /* 1層目: 文字の輪郭を際立たせるシャープな黒 */
+        0 0 8px rgba(0, 0, 0, 0.8), /* 2層目: 中程度の黒のグロー（発光）効果 */
+        0 0 16px rgba(0, 0, 0, 0.6);/* 3層目: 周囲に広がるソフトなアンビエントシャドウ */
+}
+
+.page-text h2 {
+    margin: 0;
+    font-size: 3rem;
+    line-height: 1.15;
+    color: azure;
+    text-shadow:
+        0 0 4px rgba(0, 0, 0, 1),
+        0 0 8px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+.page-text h3 {
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    color: azure;
+    text-shadow:
+        0 0 4px rgba(0, 0, 0, 1),
+        0 0 8px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+.page-text ul {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: azure;
+    text-shadow: 
+        0 0 4px rgba(0, 0, 0, 1),
+        0 0 8px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+.page-text ol {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: azure;
+    text-shadow: 
+        0 0 4px rgba(0, 0, 0, 1),
+        0 0 8px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+.page-text p {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: azure;
+    text-shadow: 
+        0 0 4px rgba(0, 0, 0, 1),
+        0 0 8px rgba(0, 0, 0, 0.8),
+        0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+
+/* ==========================================================================
+   装飾アイコン・ロゴ (Corner Icon / Badge)
+   ========================================================================== */
+
+.corner-logo {
+    /* 親要素（.page-text）を基準にして、画像の位置を自由に指定（絶対配置） */
+    position: absolute; 
+    
+    /* 親要素の右上（角）からの距離を指定 */
+    top: 15px;   
+    right: 15px; 
+    
+    width: 80px; /* アイコンの幅（視認性を高めるためのサイズ） */
+    height: auto; /* アスペクト比を維持 */
+    
+    /* テキストや背景よりも確実に前面（上層）に表示させる設定 */
+    z-index: 10; 
+}
+
