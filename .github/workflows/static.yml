@@ -41,8 +41,8 @@ jobs:
       # NEW STEP: Copy your folders and choose your URL names
       - name: Copy Site 1 and Site 2
         run: |
-          cp -r ./HTML/プロジェクト１ ./public-site/project1
-          cp -r ./HTML/プロジェクト２ ./public-site/project2
+          cp -r ./HTML/*１ ./public-site/project1
+          cp -r ./HTML/*２ ./public-site/project2
         # Change './folder1' and './folder2' to match your actual GitHub folder names.
         # Change 'portfolio' and 'blog' to whatever you want your website URLs to be.
 
