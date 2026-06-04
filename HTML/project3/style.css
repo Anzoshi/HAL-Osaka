@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+html{
+    scroll-behavior: smooth;
+}
+/* 全体のスタイル（暗いテーマでプレミアム感を出す） */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #05070c;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* １）ヘッダーのスタイル（動画背景） */
+header {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    overflow-x: auto; /* 横スクロールを許可 */
+    scroll-snap-type: x mandatory; /* ピタッと止まるスナップ効果 */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+header::-webkit-scrollbar {
+            display: none;
+}
+/* スライドごとの設定 */
+.carousel-slide {
+position: relative;
+flex: 0 0 100%; /* 各スライドを画面幅100%にする */
+width: 100%;
+height: 100%;
+scroll-snap-align: start; /* スクロール時に左端でピタッと止める */
+overflow: hidden;
+}
+/* 左右のナビゲーション矢印 */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .nav-arrow:hover {
+            color: #ffffff; /* ホバー時に白く光らせる */
+        }
+        .arrow-left { left: 30px; }
+        .arrow-right { right: 30px; }
+.video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+    object-fit: cover;
+}
+
+.cinema-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(5, 7, 12, 0.95) 10%, rgba(5, 7, 12, 0.5) 50%, rgba(5, 7, 12, 0) 100%),
+                            linear-gradient(to top, rgba(5, 7, 12, 1) 0%, rgba(5, 7, 12, 0) 20%);
+    z-index: 2;
+}
+
+.header-content {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    z-index: 3;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0 0 10px 0;
+}
+
+/* ２）メインコンテンツのスタイル */
+main {
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.movie-img {
+    width: 300px;
+    border-radius: 4px;
+}
+
+.movie-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+a {
+    color: #00b4d8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* テーブルのスタイル */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+th,
+td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #1a1a24;
+    color: #4cd3ff;
+}
+
+/* ３）フッターのスタイル */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #020305;
+    color: #666;
+}
+
+.back-to-top {
+    display: block;
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1.2rem;
+}
+.category-tag {
+    text-transform: uppercase; /* Forces text to ALL CAPS */
+    letter-spacing: 0.15em;    /* Spreads the letters out beautifully */
+}
+.movie-description {
+    font-size: 2em;
+    letter-spacing: 0;
+    
+    letter-spacing: 0.8em; 
+    line-height: 1.6; 
+}
