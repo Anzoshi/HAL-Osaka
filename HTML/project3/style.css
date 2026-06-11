@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+/* ======= PC用のスタイル ====== */
 html{
     scroll-behavior: smooth;
 }
@@ -62,6 +64,10 @@ overflow: hidden;
     z-index: 1;
     pointer-events: none;
     object-fit: cover;
+
+    opacity: 0;
+    animation: cinematicFadein 1.5s ease forwards;
+    animation-delay: 1.5s;
 }
 
 .cinema-overlay {
@@ -82,8 +88,9 @@ overflow: hidden;
     z-index: 3;
 }
 
-h1 {
+h1 span{
     font-size: 3rem;
+    display: block;
     margin: 0 0 10px 0;
 }
 
@@ -168,4 +175,66 @@ footer {
     
     letter-spacing: 0.8em; 
     line-height: 1.6; 
+}
+.video-curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #05070c; /* 背景色と全く同じディープブラック */
+    z-index: 2; /* 動画(z-index:1)の上、テキストの下に配置 */
+    
+    /* 2秒間真っ黒を維持し、1.5秒かけてゆっくり透明になって消える */
+    animation: openCurtain 1.5s ease 6s forwards; 
+}
+@keyframes openCurtain{
+    to{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+@keyframes cinematicFadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ======= SP用のスタイル ====== */
+@media (max-width: 768px) {
+   h1 span{
+
+        display: block;
+        font-size: 1rem;
+     }
+     .video-bg{
+
+        width: 177.77vh;
+        height: 100vh;
+     }
+     .header-content{
+
+        position: absolute;
+        bottom: 1.875rem;
+        left: 1.25rem;
+        right: 1.25rem;
+        text-align: left;
+        z-index: 3;
+     }
+    }
+
+/* TB */
+@media (max-width: 1024px) {
+    h1 span{
+        display: block;
+        font-size: 1.5rem;
+    }
+    .video-bg{
+
+        width: 133.33vh;
+        height: 77.77vh;
+    }
 }
